@@ -37,7 +37,7 @@ module Middleman
         FileUtils.rm_rf(Dir.glob('data/prismic_*'))
 
         api = ::Prismic.api(MiddlemanPrismic.options.api_url)
-        response = api.form('everything').submit(api.ref(reference))
+        response = api.form('everything').page_size(100).submit(api.ref(reference))
 
         available_documents = []
         response.each {|d| available_documents << d.type}
